@@ -96,13 +96,13 @@ class Player(pygame.sprite.Sprite):
             keys = pygame.key.get_pressed()
             self.acc.x = 0
             self.vel = vec(0, 0)
-            if keys[K_LEFT]:
+            if keys[K_LEFT] or keys[K_a]:
                 self.acc.x = -PLAYER_SPEED
-            if keys[K_RIGHT]:
+            if keys[K_RIGHT] or keys[K_d]:
                 self.acc.x = PLAYER_SPEED
-            if keys[K_UP]:
+            if keys[K_UP] or keys[K_w]:
                 self.jump()
-            if keys[K_DOWN] and self.side_jump:
+            if (keys[K_DOWN] or keys[K_s]) and self.side_jump:
                 self.acc.y = PLAYER_SPEED//2
             self.vel.x += self.acc.x
             self.vel.y += self.acc.y
